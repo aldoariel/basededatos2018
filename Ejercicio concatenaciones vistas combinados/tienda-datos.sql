@@ -1,0 +1,106 @@
+SET CLIENT_ENCODING TO UTF8;
+SET STANDARD_CONFORMING_STRINGS TO ON;
+
+/*
+  Ejemplos correspondientes a
+  "BASE DE DATOS II
+  analisis 2018-1
+  ejercicios de base de datos dados en clases"
+*/
+
+BEGIN;
+
+DELETE FROM pedido;
+DELETE FROM cliente;
+DELETE FROM oferta;
+DELETE FROM pieza;
+DELETE FROM proveedor;
+
+-- [EJEMPLOS INSERT INTO]
+-- INSERT INTO pieza DEFAULT VALUES;
+INSERT INTO pieza (codigo, descr, color, peso) VALUES('MON001','PHILIPS 17 TFT', 'Amarillo', 4);
+--INSERT INTO pieza (codigo, descr, color, peso) VALUES('MON002','PHILIPS 19 TFT', 'Azulado', 6);
+--INSERT INTO pieza (codigo, descr, color, peso) VALUES('MON001','PHILIPS 19 TFT', 'Azul', 6);
+INSERT INTO pieza (codigo, descr) VALUES ('MON002','PHILIPS 19 TFT');
+
+-- [EJEMPLOS DELETE FROM]
+DELETE FROM pieza WHERE codigo = 'MON001';
+DELETE FROM pieza WHERE peso > 2 AND color = 'Amarillo';
+DELETE FROM pieza; 
+
+
+-- [CARGA DATOS]
+--
+-- Data for Name: proveedor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO proveedor VALUES (36524178, 'COMP ALTERNATIVOS, SA', 'CALLE JESUS, 5', 'Ciudad Real');
+INSERT INTO proveedor VALUES (45712891, 'LOS MEJORES ORD, SL', NULL, 'Valencia');
+INSERT INTO proveedor VALUES (65891654, 'ORDENADORES MALOS, SA', 'CALLE POETA, 25', 'Valencia');
+INSERT INTO proveedor VALUES (87983245, 'OTROS ORDENADORES, SL', 'CALLE AYUNTAMIENTO, 48', NULL);
+INSERT INTO proveedor VALUES (41254765, 'MIS COMPUTADORES, SL', 'AVENIDA DEL CID, 10', NULL);
+
+--
+-- Data for Name: pieza; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO pieza VALUES ('CPU002', 'AMD 64 3.2 GHZ ', 'Negro', 0.300);
+INSERT INTO pieza VALUES ('CPU001', 'INTEL P4 3.2 GHZ ', 'Negro', 0.250);
+INSERT INTO pieza VALUES ('RAM001', 'DDR 512(400) KINGSTON', 'Otro', NULL);
+INSERT INTO pieza VALUES ('RAM002', 'DDR2 1GB(533) KINGSTON', 'Otro', NULL);
+INSERT INTO pieza VALUES ('HDD001', 'DD 160 GB 133/7200', 'Otro', 1.000);
+INSERT INTO pieza VALUES ('HDD002', 'DD 160 GB SERIAL ATA', 'Otro', 1.100);
+INSERT INTO pieza VALUES ('POR002', 'TOSHIBA SATELLITE M30X-166', 'Rojo', 2.800);
+INSERT INTO pieza VALUES ('MON002', 'PHILIPS 19 TFT', 'Otro', NULL);
+INSERT INTO pieza VALUES ('POR003', 'TOSHIBA SATELLITE M30X-128', 'Otro', 3.500);
+INSERT INTO pieza VALUES ('POR004', 'DELL 17 TFT', 'Azul', 4.000);
+INSERT INTO pieza VALUES ('PLA002', 'P4 ASUS P5GD2 DELUXE', 'Otro', 1.200);
+INSERT INTO pieza VALUES ('PLA003', 'AMD ASUS K8V-SE DELUXE', 'Otro', 0.900);
+INSERT INTO pieza VALUES ('POR001', 'ACER INSPIRE 1691 WL', 'Rojo', 2.000);
+
+--
+-- Data for Name: oferta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO oferta VALUES (36524178, 'PLA003', 120.00);
+INSERT INTO oferta VALUES (65891654, 'PLA002', 150.00);
+INSERT INTO oferta VALUES (65891654, 'PLA003', 130.00);
+INSERT INTO oferta VALUES (65891654, 'POR001', 2100.00);
+INSERT INTO oferta VALUES (36524178, 'POR001', 1900.00);
+INSERT INTO oferta VALUES (41254765, 'MON002', 100.00);
+INSERT INTO oferta VALUES (41254765, 'POR001', 2150.00);
+INSERT INTO oferta VALUES (87983245, 'RAM001', 50.00);
+INSERT INTO oferta VALUES (87983245, 'POR001', 2100.00);
+
+--
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO cliente VALUES (54989911, 'GUSTAVO', 'CALLE SALAMANCA, 10', 'Alicante');
+INSERT INTO cliente VALUES (11223344, 'DON JOSE', 'CALLE LA MAR, 28', 'Valencia');
+INSERT INTO cliente VALUES (65663322, 'DON PEPITO', 'CALLE LA MAR, 25', 'Valencia');
+
+--
+-- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO pedido VALUES (2, '2005-05-02', 65663322, 65891654, 'PLA002', 5);
+INSERT INTO pedido VALUES (3, '2005-05-02', 11223344, 41254765, 'MON002', 2);
+INSERT INTO pedido VALUES (4, '2005-04-10', 65663322, 41254765, 'POR001', 1);
+INSERT INTO pedido VALUES (7, '2005-05-13', 54989911, 65891654, 'PLA003', 5);
+INSERT INTO pedido VALUES (5, '2005-05-01', 54989911, 36524178, 'PLA003', 10);
+INSERT INTO pedido VALUES (1, '2005-05-01', 65663322, 36524178, 'POR001', 1);
+INSERT INTO pedido VALUES (6, '2005-05-10', 11223344, 36524178, 'POR001', 1);
+INSERT INTO pedido VALUES (8, '2005-05-22', 11223344, NULL, 'HDD001', 1);
+
+--- Datos para ejemplo proveedor internacional
+
+DROP TABLE IF EXISTS proveedorint;
+CREATE TABLE proveedorint (dni d_dni CONSTRAINT cp_proveedorint PRIMARY KEY,nombre VARCHAR(25) NOT NULL, direccion VARCHAR (40), ciudad VARCHAR(20));
+INSERT INTO proveedorint VALUES (45712891, 'LOS MEJORES ORD, SL', NULL, 'Valencia');
+INSERT INTO proveedorint VALUES (11003478, 'COMP INTERNATIONAL, SA', 'CALLE NAPOLEON,2', 'Paris');
+INSERT INTO proveedorint VALUES (98776655, 'ITALIAN COMPUTERS, SA', 'CALLE NAPOLEON,2', 'Milan');
+INSERT INTO proveedorint VALUES (41254765, 'MIS COMPUTADORES, SL', 'AVENIDA DEL CID, 10', 'Sevilla');
+
+
+END;
