@@ -1,0 +1,7 @@
+select current_user()
+
+explain select * from cliente 
+           where nombre = 'Juan Perez'
+           
+alter table cliente
+  add index ix_nombre (nombre)

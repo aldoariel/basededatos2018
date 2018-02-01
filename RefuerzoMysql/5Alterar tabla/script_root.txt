@@ -1,0 +1,13 @@
+select current_user()
+
+ --agrega columna
+alter table pedido
+ add column forma_pago varchar(20) not null
+ 
+alter table pedido
+ add column status varchar(20) not null default 'PRESUPUESTO'
+ 
+----BORRAR COLUMNA
+alter table pedido
+ drop column status
+ 

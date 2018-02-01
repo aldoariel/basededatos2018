@@ -1,0 +1,15 @@
+use pedido_venta
+
+show grants
+
+-- yyyy-mm-dd
+insert into cliente (nombre, email, fecha_nacimiento) 
+ values ('Maria Gonzalez', 'maria@maria.com', '1991-02-20')
+ 
+select *
+   from cliente
+   
+insert pedido (fecha_venta, fecha_entrega, valor_flete, valor_total) 
+ values ('2017-06-10 10:03:20', '2017-06-12', 30.25, 352.50)
+ 
+select * from pedido

@@ -1,0 +1,14 @@
+select current_user()
+
+select * from pedido
+
+--------------INSERTAR DATOS
+insert into pedido (fecha_venta, fecha_entrega, valor_total, cliente_id, forma_pago)
+  values (now(), '2014-08-25', 200, 1, 'EFECTIVO')
+
+insert into pedido (fecha_venta, fecha_entrega, valor_total, cliente_id, forma_pago
+    , status)
+  values (now(), '2017-08-25', 200, 1, 'EFECTIVO', 'CANCELADO')
+ 
+
+ 

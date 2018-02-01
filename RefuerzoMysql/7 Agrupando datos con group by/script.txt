@@ -1,0 +1,14 @@
+select current_user()
+---------
+select * from pedido
+------------------------
+select status
+     , sum(valor_total) total_ventas
+ from pedido
+ group by status
+----------------------
+select date(fecha_venta) 
+     , sum(valor_total)
+  from pedido
+  where status = 'EMITIDO'
+  group by date(fecha_venta)

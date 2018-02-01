@@ -1,0 +1,14 @@
+select current_user()
+
+select * from cliente
+select * from pedido
+
+select * from producto
+
+insert into producto (nome, valor_unitario, cantidad_stock)
+ values ('Coca Cola ', 20.50, 300)
+
+select * from item_pedido
+
+insert into item_pedido (pedido_id, producto_id, cantidad)
+ values (3, 1, 2)

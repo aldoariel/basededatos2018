@@ -1,0 +1,47 @@
+select current_user()
+
+select * from cliente
+select * from pedido
+
+insert into producto (nombe, valor_unitario, cantidad_stock)
+ values('Papel A4', 12.00, 100)
+
+insert into pedido (fecha_venta, fecha_entrega, valor_flete, valor_total, cliente_id)
+ values ('2017-07-11 15:22:00', '2017-07-15', 33.00, 400.00, 2)
+
+insert into item_pedido (pedido_id, producto_id, cantidad)
+ values (4, 1, 4)
+
+insert into item_pedido (pedido_id, producto_id, cantidad)
+ values (4, 2, 2)
+
+select * from pedido 
+
+select p.*
+  from pedido p
+     , cliente c
+  where p.cliente_id = c.id
+    and c.nombre = 'Juan Perez'
+    
+select * from cliente 
+select * from pedido
+select * from item_pedido
+select * from producto
+
+select pr.nombre
+     , i.cantidad
+  from cliente c
+     , pedido pe
+     , item_pedido i
+     , producto pr
+  where c.id = pe.cliente_id
+    and pe.id = i.pedido_id
+    and i.producto_id = pr.id
+    and c.nombre = 'Maria Gonzalez'     
+ 
+
+
+
+ 
+
+ 

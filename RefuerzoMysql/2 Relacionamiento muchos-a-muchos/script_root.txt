@@ -1,0 +1,21 @@
+select current_user()
+
+drop table producto
+
+create table producto (
+  id bigint primary key auto_increment,
+  nombre varchar(50),
+  valor_unitario decimal(10,2),
+  cantidad_stock integer
+) engine=InnoDB
+
+create table item_pedido (
+  pedido_id bigint,
+  producto_id bigint,
+  cantidad integer,
+  primary key (pedido_id, producto_id),
+  foreign key (pedido_id)
+    references pedido(id),
+  foreign key (producto_id)
+    references producto(id)
+) engine=InnoDB

@@ -1,0 +1,24 @@
+select current_user()
+
+create database pedido_venta;
+
+use pedido_venta
+
+create table pedido_venta.cliente (
+  id bigint primary key auto_increment,
+  nombre varchar(100),
+  email varchar(50),
+  fecha_nacimiento date
+) engine=InnoDB;
+
+create table pedido (
+  id bigint primary key auto_increment,
+  fecha_venta datetime,
+  obs text,
+  fecha_entrega date,
+  valor_flete decimal(6,2),
+  valor_total decimal(10,2)
+) engine=InnoDB;
+-----privilegios
+grant select, insert on pedido_venta.* to 'usuario1'@'localhost'
+flush privileges

@@ -1,0 +1,15 @@
+select current_user()
+
+select * from pedido
+
+insert into pedido (fecha_venta, fecha_entrega, valor_flete, valor_total, cliente_id)
+ values (now(), '2017-08-24', 10.00, 100.00, 1) 
+ 
+
+select * from pedido
+ where month(fecha_venta) = 7
+   and year(fecha_venta) = 2017
+
+select * from pedido
+ where fecha_venta >= '2017-07-01 00:00:00'
+   and fecha_venta <= '2017-07-31 23:59:59'
