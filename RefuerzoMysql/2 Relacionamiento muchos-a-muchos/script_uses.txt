@@ -5,7 +5,7 @@ select * from pedido
 
 select * from producto
 
-insert into producto (nome, valor_unitario, cantidad_stock)
+insert into producto (nombre, valor_unitario, cantidad_stock)
  values ('Coca Cola ', 20.50, 300)
 
 select * from item_pedido
