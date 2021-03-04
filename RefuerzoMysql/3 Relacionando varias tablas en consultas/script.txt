@@ -3,7 +3,7 @@ select current_user()
 select * from cliente
 select * from pedido
 
-insert into producto (nombe, valor_unitario, cantidad_stock)
+insert into producto (nombre, valor_unitario, cantidad_stock)
  values('Papel A4', 12.00, 100)
 
 insert into pedido (fecha_venta, fecha_entrega, valor_flete, valor_total, cliente_id)
